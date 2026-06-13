@@ -1,0 +1,177 @@
+{
+  "agent": "agent3",
+  "generated_at": "2026-06-13T04:33:26Z",
+  "total_clauses": 5,
+  "results": [
+    {
+      "clause_causing_risk": "Section 1.1 Pre-Closing Operating Restrictions",
+      "reason_for_risk": "Overly restrictive pre-closing operating covenants",
+      "clause_summary": "Buyer has significant control over Target's operations pre-closing",
+      "dominant_party": "Company A (Buyer)",
+      "company_a_buyer": {
+        "financial_indemnity_exposure": 1,
+        "operational_lockdown": 5,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 1,
+        "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 1,
+        "advantages_gained": "Control over Target's hiring, contracting, pricing, and customer communication"
+      },
+      "company_b_target": {
+        "financial_indemnity_exposure": 1,
+        "operational_lockdown": 0,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 1,
+        "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 1,
+        "advantages_gained": "None"
+      },
+      "suggested_compromise": "Target should be allowed to operate with more autonomy pre-closing, with Buyer approval required only for major decisions",
+      "chunk_id": "CK-02",
+      "mathematical_balance": {
+        "score_company_a": 36.0,
+        "score_company_b": 16.0,
+        "total_pool": 52.0,
+        "company_a_favorability_pct": 69.23,
+        "company_b_favorability_pct": 30.77,
+        "negotiation_delta_pct": 20.0
+      }
+    },
+    {
+      "clause_causing_risk": "ARTICLE II: TRANSITIONAL ASSETS, Section 2.1 Intellectual Property Vesting",
+      "reason_for_risk": "Irrevocable vesting of intellectual property, operational source code, and trade secrets in the Buyer during the due diligence transition window, even if the transaction fails to close",
+      "clause_summary": "Buyer gains immediate and irrevocable ownership of intellectual property, source code, and trade secrets during due diligence, with no return of rights if the transaction fails",
+      "dominant_party": "Company A (Buyer)",
+      "company_a_buyer": {
+        "financial_indemnity_exposure": 5,
+        "operational_lockdown": 5,
+        "ip_asset_vulnerability": 5,
+        "termination_remedial_asymmetry": 5,
+        "dispute_regulatory_burden": 3,
+        "consequential_damage_exposures": 4,
+        "advantages_gained": "Irrevocable ownership of intellectual property, source code, and trade secrets, with no obligation to return rights if the transaction fails"
+      },
+      "company_b_target": {
+        "financial_indemnity_exposure": 0,
+        "operational_lockdown": 0,
+        "ip_asset_vulnerability": 0,
+        "termination_remedial_asymmetry": 0,
+        "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 0,
+        "advantages_gained": "No protection of intellectual property, source code, and trade secrets during due diligence"
+      },
+      "suggested_compromise": "Consider adding a provision that returns intellectual property, source code, and trade secrets to the Seller if the transaction fails to close, or establishing a mechanism for the Seller to retain ownership and control during the due diligence period",
+      "chunk_id": "CK-03",
+      "mathematical_balance": {
+        "score_company_a": 94.0,
+        "score_company_b": 2.0,
+        "total_pool": 96.0,
+        "company_a_favorability_pct": 97.92,
+        "company_b_favorability_pct": 2.08,
+        "negotiation_delta_pct": 92.0
+      }
+    },
+    {
+      "clause_causing_risk": "ARTICLE III: TERMINATION RIGHTS, Section 3.1 Unilateral Termination and Break Fees",
+      "reason_for_risk": "Asymmetric termination rights and break fees",
+      "clause_summary": "Buyer can terminate at any time without a fee, while Seller must pay a break fee if terminating due to financing failure",
+      "dominant_party": "Company A (Buyer)",
+      "company_a_buyer": {
+        "financial_indemnity_exposure": 5,
+        "operational_lockdown": 1,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 5,
+        "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 1,
+        "advantages_gained": "Unilateral termination right, no termination fee, potential break fee receipt"
+      },
+      "company_b_target": {
+        "financial_indemnity_exposure": 0,
+        "operational_lockdown": 0,
+        "ip_asset_vulnerability": 0,
+        "termination_remedial_asymmetry": 0,
+        "dispute_regulatory_burden": 0,
+        "consequential_damage_exposures": 0,
+        "advantages_gained": "None"
+      },
+      "suggested_compromise": "Consider introducing a mutual termination fee or a more symmetric termination right to balance the parties' interests",
+      "chunk_id": "CK-04",
+      "mathematical_balance": {
+        "score_company_a": 52.0,
+        "score_company_b": 0.0,
+        "total_pool": 52.0,
+        "company_a_favorability_pct": 100.0,
+        "company_b_favorability_pct": 0.0,
+        "negotiation_delta_pct": 52.0
+      }
+    },
+    {
+      "clause_causing_risk": "Break Fee and Indemnification",
+      "reason_for_risk": "Asymmetric indemnification obligations and break fee payment",
+      "clause_summary": "Seller pays break fee and has open-ended indemnification obligations",
+      "dominant_party": "Company A (Buyer)",
+      "company_a_buyer": {
+        "financial_indemnity_exposure": 5,
+        "operational_lockdown": 1,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 5,
+        "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 5,
+        "advantages_gained": "Asymmetric indemnification, break fee, and consequential damage recovery"
+      },
+      "company_b_target": {
+        "financial_indemnity_exposure": 0,
+        "operational_lockdown": 0,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 0,
+        "dispute_regulatory_burden": 0,
+        "consequential_damage_exposures": 0,
+        "advantages_gained": "None"
+      },
+      "suggested_compromise": "Consider introducing a deductible, basket, or cap to Seller's indemnification obligations and revising the break fee structure to achieve a more balanced agreement.",
+      "chunk_id": "CK-05",
+      "mathematical_balance": {
+        "score_company_a": 60.0,
+        "score_company_b": 4.0,
+        "total_pool": 64.0,
+        "company_a_favorability_pct": 93.75,
+        "company_b_favorability_pct": 6.25,
+        "negotiation_delta_pct": 56.0
+      }
+    },
+    {
+      "clause_causing_risk": "Section 4.2 Liability Damage Exclusions and Section 5.1 Legal Expenses",
+      "reason_for_risk": "Asymmetric damage recovery rights and litigation cost allocation",
+      "clause_summary": "Seller waives right to seek indirect, incidental, special, or consequential damages, while Buyer retains full rights to claim such damages. Litigation costs go to the prevailing party.",
+      "dominant_party": "Company A (Buyer)",
+      "company_a_buyer": {
+        "financial_indemnity_exposure": 5,
+        "operational_lockdown": 1,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 1,
+        "dispute_regulatory_burden": 4,
+        "consequential_damage_exposures": 5,
+        "advantages_gained": "Asymmetric damage recovery rights, unrestricted ability to claim lost profits and consequential damages, and favorable litigation cost allocation"
+      },
+      "company_b_target": {
+        "financial_indemnity_exposure": 0,
+        "operational_lockdown": 1,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 1,
+        "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 0,
+        "advantages_gained": "None"
+      },
+      "suggested_compromise": "Consider revising Section 4.2 to allow Seller to recover certain types of damages, such as direct damages, and negotiate a more balanced approach to litigation cost allocation in Section 5.1",
+      "chunk_id": "CK-06",
+      "mathematical_balance": {
+        "score_company_a": 54.0,
+        "score_company_b": 13.0,
+        "total_pool": 67.0,
+        "company_a_favorability_pct": 80.6,
+        "company_b_favorability_pct": 19.4,
+        "negotiation_delta_pct": 41.0
+      }
+    }
+  ]
+}

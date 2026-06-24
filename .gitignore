@@ -1,2 +1,19 @@
 .env
 __pycache__/
+
+# Node / React Frontend
+node_modules/
+dist/
+build/
+.npm/
+npm-debug.log*
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+.env_venv/
+
+# OS Files
+.DS_Store
+Thumbs.db

@@ -18,7 +18,7 @@ from dotenv import load_dotenv
 # =====================================================================
 # GLOBAL PIPELINE CONFIGURATION & CONSTANTS
 # =====================================================================
-BASE_CLASSIFIER_PATH = r"D:\VS_code\Python\Agentic AI\Lawc\Project\Agent-2\legal_risk_classifier.pkl"
+BASE_CLASSIFIER_PATH = r"legal_risk_classifier.pkl"
 
 ROUTING_CALIBRATION_MODEL = "llama-3.3-70b-versatile"
 QUANTITATIVE_ANALYSIS_MODEL = "llama-3.3-70b-versatile"
@@ -110,7 +110,7 @@ class LegalPipelineOrchestrator:
         """
         if not os.path.exists(target_pdf_path):
             print(f"\n❌ Execution Error: Target file path does not exist: '{target_pdf_path}'")
-            return
+            return []
 
         print("\n" + "─" * 80)
         print(f"📁 Processing File Target: {os.path.basename(target_pdf_path)}")
@@ -124,7 +124,7 @@ class LegalPipelineOrchestrator:
         
         if not raw_chunks:
             print("⚠️ Layer 1 returned empty data layout blocks. Pipeline terminating.")
-            return
+            return []
         print(f"✨ [LAYER 1 SUCCESS] Extracted {len(raw_chunks)} normalized chunk text structures.")
 
         # -----------------------------------------------------------------
@@ -142,7 +142,7 @@ class LegalPipelineOrchestrator:
         
         if not flagged_elements:
             print("\n🎉 Run Concluded: Zero contract risk factors found above dynamic evaluation thresholds.")
-            return
+            return []
 
         # -----------------------------------------------------------------
         # LAYER 3: Microeconomic Game Evaluation & Payoff Balancing
@@ -173,8 +173,10 @@ class LegalPipelineOrchestrator:
             print("\n" + "=" * 80)
             print("🎉 WORKFLOW ORCHESTRATION PIPELINE RUN RECOVERY COMPLETED")
             print("=" * 80 + "\n")
+            return final_quantitative_payloads
         else:
             print("⚠️ Zero output data blocks returned from quantitative parameter breakdown.")
+            return []
 
 
 # =====================================================================

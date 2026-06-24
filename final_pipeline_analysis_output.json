@@ -1,12 +1,46 @@
 {
   "agent": "agent3",
-  "generated_at": "2026-06-13T04:33:26Z",
-  "total_clauses": 5,
+  "generated_at": "2026-06-24T04:30:11Z",
+  "total_clauses": 9,
   "results": [
     {
-      "clause_causing_risk": "Section 1.1 Pre-Closing Operating Restrictions",
-      "reason_for_risk": "Overly restrictive pre-closing operating covenants",
-      "clause_summary": "Buyer has significant control over Target's operations pre-closing",
+      "clause_causing_risk": "ARTICLE I: REPRESENTATIONS & ANTI-SANDBAGGING",
+      "reason_for_risk": "Seller's absolute, strict liability representations and disclaimed anti-sandbagging defenses increase Buyer's indemnity rights",
+      "clause_summary": "Seller provides absolute representations and warranties, and waives anti-sandbagging defenses, allowing Buyer to seek full indemnity for known issues",
+      "dominant_party": "Company A (Buyer)",
+      "company_a_buyer": {
+        "financial_indemnity_exposure": 5,
+        "operational_lockdown": 1,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 1,
+        "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 1,
+        "advantages_gained": "Absolute representations, disclaimed anti-sandbagging defenses, and full indemnity rights"
+      },
+      "company_b_target": {
+        "financial_indemnity_exposure": 0,
+        "operational_lockdown": 1,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 1,
+        "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 1,
+        "advantages_gained": "None"
+      },
+      "suggested_compromise": "Consider adding a knowledge qualifier to Seller's representations or introducing a capped indemnity regime to balance the risk allocation",
+      "chunk_id": "CK-02",
+      "mathematical_balance": {
+        "score_company_a": 40.0,
+        "score_company_b": 15.0,
+        "total_pool": 55.0,
+        "company_a_favorability_pct": 72.73,
+        "company_b_favorability_pct": 27.27,
+        "negotiation_delta_pct": 25.0
+      }
+    },
+    {
+      "clause_causing_risk": "ARTICLE II: OPERATIONAL RESTRICTIONS, Section 2.1 Pre-Closing Operations",
+      "reason_for_risk": "Overly restrictive operational covenants limiting the Seller's ability to manage daily operations",
+      "clause_summary": "The Buyer has significant control over the Seller's operations prior to closing, including hiring, contracts, pricing, and customer communication",
       "dominant_party": "Company A (Buyer)",
       "company_a_buyer": {
         "financial_indemnity_exposure": 1,
@@ -15,7 +49,7 @@
         "termination_remedial_asymmetry": 1,
         "dispute_regulatory_burden": 1,
         "consequential_damage_exposures": 1,
-        "advantages_gained": "Control over Target's hiring, contracting, pricing, and customer communication"
+        "advantages_gained": "Control over operational decisions, ability to influence pricing and customer communication"
       },
       "company_b_target": {
         "financial_indemnity_exposure": 1,
@@ -24,10 +58,10 @@
         "termination_remedial_asymmetry": 1,
         "dispute_regulatory_burden": 1,
         "consequential_damage_exposures": 1,
-        "advantages_gained": "None"
+        "advantages_gained": "None significant, limited ability to manage daily operations"
       },
-      "suggested_compromise": "Target should be allowed to operate with more autonomy pre-closing, with Buyer approval required only for major decisions",
-      "chunk_id": "CK-02",
+      "suggested_compromise": "Amend Section 2.1 to allow for more flexibility in operational decisions, such as a materiality threshold for requiring Buyer approval or a more streamlined approval process",
+      "chunk_id": "CK-03",
       "mathematical_balance": {
         "score_company_a": 36.0,
         "score_company_b": 16.0,
@@ -38,43 +72,77 @@
       }
     },
     {
-      "clause_causing_risk": "ARTICLE II: TRANSITIONAL ASSETS, Section 2.1 Intellectual Property Vesting",
-      "reason_for_risk": "Irrevocable vesting of intellectual property, operational source code, and trade secrets in the Buyer during the due diligence transition window, even if the transaction fails to close",
-      "clause_summary": "Buyer gains immediate and irrevocable ownership of intellectual property, source code, and trade secrets during due diligence, with no return of rights if the transaction fails",
+      "clause_causing_risk": "ARTICLE III: TRANSITIONAL FORFEITURE",
+      "reason_for_risk": "Irrevocable vesting of intellectual property and trade secrets in the Buyer, even if the transaction fails to close",
+      "clause_summary": "Buyer gains immediate and irrevocable ownership of modified or accessed intellectual property, operational source code, and trade secrets during due diligence, regardless of transaction closure",
       "dominant_party": "Company A (Buyer)",
       "company_a_buyer": {
         "financial_indemnity_exposure": 5,
-        "operational_lockdown": 5,
+        "operational_lockdown": 4,
         "ip_asset_vulnerability": 5,
         "termination_remedial_asymmetry": 5,
         "dispute_regulatory_burden": 3,
         "consequential_damage_exposures": 4,
-        "advantages_gained": "Irrevocable ownership of intellectual property, source code, and trade secrets, with no obligation to return rights if the transaction fails"
+        "advantages_gained": "Irrevocable ownership of intellectual property, operational source code, and trade secrets"
       },
       "company_b_target": {
         "financial_indemnity_exposure": 0,
-        "operational_lockdown": 0,
+        "operational_lockdown": 1,
         "ip_asset_vulnerability": 0,
         "termination_remedial_asymmetry": 0,
         "dispute_regulatory_burden": 1,
-        "consequential_damage_exposures": 0,
-        "advantages_gained": "No protection of intellectual property, source code, and trade secrets during due diligence"
+        "consequential_damage_exposures": 1,
+        "advantages_gained": "None"
       },
-      "suggested_compromise": "Consider adding a provision that returns intellectual property, source code, and trade secrets to the Seller if the transaction fails to close, or establishing a mechanism for the Seller to retain ownership and control during the due diligence period",
-      "chunk_id": "CK-03",
+      "suggested_compromise": "Consider adding conditions for the return of intellectual property and trade secrets to the Seller if the transaction fails to close, or establishing a mechanism for the Seller to retain ownership of certain assets",
+      "chunk_id": "CK-04",
       "mathematical_balance": {
-        "score_company_a": 94.0,
-        "score_company_b": 2.0,
-        "total_pool": 96.0,
-        "company_a_favorability_pct": 97.92,
-        "company_b_favorability_pct": 2.08,
-        "negotiation_delta_pct": 92.0
+        "score_company_a": 90.0,
+        "score_company_b": 8.0,
+        "total_pool": 98.0,
+        "company_a_favorability_pct": 91.84,
+        "company_b_favorability_pct": 8.16,
+        "negotiation_delta_pct": 82.0
       }
     },
     {
-      "clause_causing_risk": "ARTICLE III: TERMINATION RIGHTS, Section 3.1 Unilateral Termination and Break Fees",
-      "reason_for_risk": "Asymmetric termination rights and break fees",
-      "clause_summary": "Buyer can terminate at any time without a fee, while Seller must pay a break fee if terminating due to financing failure",
+      "clause_causing_risk": "ARTICLE IV: CLOSING CONDITIONS, Section 4.1 Unilateral Financing Discretion",
+      "reason_for_risk": "Buyer has unilateral discretion over debt financing terms and can defer closing indefinitely if macroeconomic interest rates vary by more than 1%, while Seller remains locked",
+      "clause_summary": "Buyer can delay closing if debt financing terms are not satisfactory, with no time limit, and Seller cannot exit without penalty",
+      "dominant_party": "Company A (Buyer)",
+      "company_a_buyer": {
+        "financial_indemnity_exposure": 5,
+        "operational_lockdown": 4,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 5,
+        "dispute_regulatory_burden": 3,
+        "consequential_damage_exposures": 4,
+        "advantages_gained": "Unilateral control over financing terms, ability to defer closing indefinitely, and protection from adverse interest rate changes"
+      },
+      "company_b_target": {
+        "financial_indemnity_exposure": 0,
+        "operational_lockdown": 1,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 0,
+        "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 1,
+        "advantages_gained": "None"
+      },
+      "suggested_compromise": "Consider introducing a time limit for Buyer's deferral of closing, or allowing Seller to exit with a reasonable penalty if closing is delayed beyond a certain period",
+      "chunk_id": "CK-05",
+      "mathematical_balance": {
+        "score_company_a": 74.0,
+        "score_company_b": 12.0,
+        "total_pool": 86.0,
+        "company_a_favorability_pct": 86.05,
+        "company_b_favorability_pct": 13.95,
+        "negotiation_delta_pct": 62.0
+      }
+    },
+    {
+      "clause_causing_risk": "ARTICLE V: TERMINATION PENALTIES, Section 5.1 Absolute Termination Authority",
+      "reason_for_risk": "Asymmetric termination penalties favoring the Buyer",
+      "clause_summary": "Buyer can terminate at any time without penalty, while Seller must pay a break fee if terminating due to financing failure",
       "dominant_party": "Company A (Buyer)",
       "company_a_buyer": {
         "financial_indemnity_exposure": 5,
@@ -83,32 +151,32 @@
         "termination_remedial_asymmetry": 5,
         "dispute_regulatory_burden": 1,
         "consequential_damage_exposures": 1,
-        "advantages_gained": "Unilateral termination right, no termination fee, potential break fee receipt"
+        "advantages_gained": "Absolute termination authority, no termination fee, potential break fee from Seller"
       },
       "company_b_target": {
         "financial_indemnity_exposure": 0,
         "operational_lockdown": 0,
-        "ip_asset_vulnerability": 0,
+        "ip_asset_vulnerability": 1,
         "termination_remedial_asymmetry": 0,
-        "dispute_regulatory_burden": 0,
-        "consequential_damage_exposures": 0,
+        "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 1,
         "advantages_gained": "None"
       },
-      "suggested_compromise": "Consider introducing a mutual termination fee or a more symmetric termination right to balance the parties' interests",
-      "chunk_id": "CK-04",
+      "suggested_compromise": "Consider introducing a mutual termination fee or a more symmetric termination penalty structure to balance the risks between the parties",
+      "chunk_id": "CK-06",
       "mathematical_balance": {
         "score_company_a": 52.0,
-        "score_company_b": 0.0,
-        "total_pool": 52.0,
-        "company_a_favorability_pct": 100.0,
-        "company_b_favorability_pct": 0.0,
-        "negotiation_delta_pct": 52.0
+        "score_company_b": 8.0,
+        "total_pool": 60.0,
+        "company_a_favorability_pct": 86.67,
+        "company_b_favorability_pct": 13.33,
+        "negotiation_delta_pct": 44.0
       }
     },
     {
-      "clause_causing_risk": "Break Fee and Indemnification",
-      "reason_for_risk": "Asymmetric indemnification obligations and break fee payment",
-      "clause_summary": "Seller pays break fee and has open-ended indemnification obligations",
+      "clause_causing_risk": "Break Fee and Unlimited Legacy Indemnity",
+      "reason_for_risk": "Unlimited indemnification exposure for Seller and significant break fee obligation",
+      "clause_summary": "Seller is obligated to pay a break fee of 50% of the total escrow amount and has unlimited indemnification obligations for operational legacy issues",
       "dominant_party": "Company A (Buyer)",
       "company_a_buyer": {
         "financial_indemnity_exposure": 5,
@@ -117,7 +185,7 @@
         "termination_remedial_asymmetry": 5,
         "dispute_regulatory_burden": 1,
         "consequential_damage_exposures": 5,
-        "advantages_gained": "Asymmetric indemnification, break fee, and consequential damage recovery"
+        "advantages_gained": "Unlimited indemnification from Seller, significant break fee, and ability to claim consequential damages"
       },
       "company_b_target": {
         "financial_indemnity_exposure": 0,
@@ -128,8 +196,8 @@
         "consequential_damage_exposures": 0,
         "advantages_gained": "None"
       },
-      "suggested_compromise": "Consider introducing a deductible, basket, or cap to Seller's indemnification obligations and revising the break fee structure to achieve a more balanced agreement.",
-      "chunk_id": "CK-05",
+      "suggested_compromise": "Consider introducing a cap on indemnification obligations and negotiating a more balanced break fee structure to mitigate Seller's exposure",
+      "chunk_id": "CK-07",
       "mathematical_balance": {
         "score_company_a": 60.0,
         "score_company_b": 4.0,
@@ -140,18 +208,18 @@
       }
     },
     {
-      "clause_causing_risk": "Section 4.2 Liability Damage Exclusions and Section 5.1 Legal Expenses",
-      "reason_for_risk": "Asymmetric damage recovery rights and litigation cost allocation",
-      "clause_summary": "Seller waives right to seek indirect, incidental, special, or consequential damages, while Buyer retains full rights to claim such damages. Litigation costs go to the prevailing party.",
+      "clause_causing_risk": "Section 6.2 Extended Tax Indemnity Window",
+      "reason_for_risk": "The Seller is responsible for defending, indemnifying, and holding harmless the Buyer Indemnified Parties from any historical, current, or future tax liability for 20 years post-closing.",
+      "clause_summary": "The Seller bears significant long-term tax liability risk.",
       "dominant_party": "Company A (Buyer)",
       "company_a_buyer": {
         "financial_indemnity_exposure": 5,
         "operational_lockdown": 1,
         "ip_asset_vulnerability": 1,
         "termination_remedial_asymmetry": 1,
-        "dispute_regulatory_burden": 4,
-        "consequential_damage_exposures": 5,
-        "advantages_gained": "Asymmetric damage recovery rights, unrestricted ability to claim lost profits and consequential damages, and favorable litigation cost allocation"
+        "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 1,
+        "advantages_gained": "Extended tax indemnity protection for 20 years"
       },
       "company_b_target": {
         "financial_indemnity_exposure": 0,
@@ -159,18 +227,86 @@
         "ip_asset_vulnerability": 1,
         "termination_remedial_asymmetry": 1,
         "dispute_regulatory_burden": 1,
+        "consequential_damage_exposures": 1,
+        "advantages_gained": "None"
+      },
+      "suggested_compromise": "Consider reducing the tax indemnity window to 5-7 years or introducing a cap on the Seller's tax liability to balance the risk.",
+      "chunk_id": "CK-08",
+      "mathematical_balance": {
+        "score_company_a": 40.0,
+        "score_company_b": 15.0,
+        "total_pool": 55.0,
+        "company_a_favorability_pct": 72.73,
+        "company_b_favorability_pct": 27.27,
+        "negotiation_delta_pct": 25.0
+      }
+    },
+    {
+      "clause_causing_risk": "Asymmetric Liability Waiver and Tax Liability",
+      "reason_for_risk": "Asymmetric liability waiver and broad tax liability protection for Buyer",
+      "clause_summary": "Buyer is fully protected from historical, current, or future tax liabilities and consequential damages, while Seller waives all rights to seek such damages and remains liable for twenty years",
+      "dominant_party": "Company A (Buyer)",
+      "company_a_buyer": {
+        "financial_indemnity_exposure": 5,
+        "operational_lockdown": 1,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 1,
+        "dispute_regulatory_burden": 5,
+        "consequential_damage_exposures": 5,
+        "advantages_gained": "Full protection from tax liabilities, unrestricted rights to claim consequential damages"
+      },
+      "company_b_target": {
+        "financial_indemnity_exposure": 0,
+        "operational_lockdown": 1,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 1,
+        "dispute_regulatory_burden": 0,
         "consequential_damage_exposures": 0,
         "advantages_gained": "None"
       },
-      "suggested_compromise": "Consider revising Section 4.2 to allow Seller to recover certain types of damages, such as direct damages, and negotiate a more balanced approach to litigation cost allocation in Section 5.1",
-      "chunk_id": "CK-06",
+      "suggested_compromise": "Consider revising the asymmetric liability waiver to provide more balanced protection for both parties, and limiting the tax liability protection to a more reasonable time frame",
+      "chunk_id": "CK-09",
       "mathematical_balance": {
-        "score_company_a": 54.0,
-        "score_company_b": 13.0,
+        "score_company_a": 56.0,
+        "score_company_b": 11.0,
         "total_pool": 67.0,
-        "company_a_favorability_pct": 80.6,
-        "company_b_favorability_pct": 19.4,
-        "negotiation_delta_pct": 41.0
+        "company_a_favorability_pct": 83.58,
+        "company_b_favorability_pct": 16.42,
+        "negotiation_delta_pct": 45.0
+      }
+    },
+    {
+      "clause_causing_risk": "ARTICLE VII: DISPUTE FORUM LOCK",
+      "reason_for_risk": "Dispute resolution terms heavily favor the Buyer, with the Seller bearing all costs and waiving the right to a jury trial.",
+      "clause_summary": "Disputes must be resolved in the Buyer's home jurisdiction, with the Seller covering all costs, including legal fees for both parties.",
+      "dominant_party": "Company A (Buyer)",
+      "company_a_buyer": {
+        "financial_indemnity_exposure": 5,
+        "operational_lockdown": 1,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 1,
+        "dispute_regulatory_burden": 5,
+        "consequential_damage_exposures": 1,
+        "advantages_gained": "Exclusive forum, cost allocation, and waiver of jury trial"
+      },
+      "company_b_target": {
+        "financial_indemnity_exposure": 0,
+        "operational_lockdown": 0,
+        "ip_asset_vulnerability": 1,
+        "termination_remedial_asymmetry": 1,
+        "dispute_regulatory_burden": 0,
+        "consequential_damage_exposures": 1,
+        "advantages_gained": "None"
+      },
+      "suggested_compromise": "Consider revising the dispute resolution terms to a more neutral forum, or allocating costs in a more balanced manner, such as each party bearing their own costs.",
+      "chunk_id": "CK-10",
+      "mathematical_balance": {
+        "score_company_a": 48.0,
+        "score_company_b": 9.0,
+        "total_pool": 57.0,
+        "company_a_favorability_pct": 84.21,
+        "company_b_favorability_pct": 15.79,
+        "negotiation_delta_pct": 39.0
       }
     }
   ]

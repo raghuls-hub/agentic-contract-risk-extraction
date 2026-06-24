@@ -1,0 +1,12 @@
+pypdf
+langchain-text-splitters
+torch
+joblib
+sentence-transformers
+groq
+python-dotenv
+openai
+pydantic
+fastapi
+uvicorn
+python-multipart

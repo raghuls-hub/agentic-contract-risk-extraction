@@ -9,25 +9,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      - name: Push to Hugging Face via Git
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Hugging Face CLI
+        run: |
+          pip install huggingface_hub
+
+      - name: Clean up temporary PDFs locally
+        run: |
+          # Remove the PDFs so we don't upload unnecessary clutter
+          rm -rf input_documents/
+          rm -rf frontend/
+
+      - name: Upload to Hugging Face via API
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
-          # 1. Configure a temporary git user
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          
-          # 2. Remove the binary files from the local tracking context
-          # This deletes the folder and tells Git to forget about it for this push
-          rm -rf input_documents/
-          git rm -r --cached input_documents/ --ignore-unmatch
-          git commit -m "chore: clear binaries for HF sync" --allow-empty
-          
-          # 3. Add your Hugging Face Space as a remote destination
-          git remote add hf https://x-token:${HF_TOKEN}@huggingface.co/spaces/raghul-169/risk-analyzer
-          
-          # 4. Force-push the stripped branch to Hugging Face
-          git push -f hf main
+          # Use the CLI to upload the current folder directory directly to your Space
+          # This completely bypasses Git pre-receive binary hooks!
+          huggingface-cli upload-folder \
+            --repo-type=space \
+            --token=$HF_TOKEN \
+            raghul-169/risk-analyzer \
+            . \
+            . \
+            --exclude ".git/*" ".github/*"

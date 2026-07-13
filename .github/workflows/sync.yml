@@ -2,7 +2,7 @@ name: Sync to Hugging Face Hub
 
 on:
   push:
-    branches: [main] # Triggers every time you push to the main branch
+    branches: [main]
 
 jobs:
   sync:
@@ -11,10 +11,18 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
+      - name: Push to Hugging Face via Git
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          # 1. Configure a temporary git user
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
           
-      - uses: huggingface/hub-sync@v0.1.0
-        with:
-          github_repo_id: ${{ github.repository }}
-          huggingface_repo_id: raghul-169/risk-analyzer # Change this to your exact HF details
-          hf_token: ${{ secrets.HF_TOKEN }}
-          space_sdk: docker # Forces it to deploy as your custom backend container
+          # 2. Add your Hugging Face Space as a remote destination
+          # Replace 'YOUR_HF_USERNAME' and 'YOUR_SPACE_NAME' with your actual HF details
+          git remote add hf https://x-token:${HF_TOKEN}@huggingface.co/spaces/raghul-169/risk-analyzer
+          
+          # 3. Force-push the main branch to Hugging Face
+          git push -f hf main

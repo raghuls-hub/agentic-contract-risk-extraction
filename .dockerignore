@@ -1,0 +1,5 @@
+frontend/
+input_documents/
+.git
+__pycache__/
+*.pyc

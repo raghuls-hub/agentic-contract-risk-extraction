@@ -1,0 +1,36 @@
+name: Sync to Hugging Face Hub
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Hugging Face CLI
+        run: |
+          pip install -U "huggingface_hub[cli]"
+
+      - name: Clean up temporary files locally
+        run: |
+          # Remove PDFs, frontend, and Git internals so we don't upload unnecessary clutter
+          rm -rf input_documents/
+          rm -rf frontend/
+          rm -rf .github/
+          rm -rf .git/
+
+      - name: Upload to Hugging Face via API
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          # Use the new hf CLI to upload the current directory to your Space
+          # This completely bypasses Git pre-receive binary hooks
+          hf upload raghul-169/risk-analyzer . --repo-type space

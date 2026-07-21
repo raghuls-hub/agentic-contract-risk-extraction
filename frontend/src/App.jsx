@@ -7,12 +7,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [results, setResults] = useState(null);
-  const [fullText, setFullText] = useState("");
   const [pdfBase64, setPdfBase64] = useState("");
   const [selectedClauseId, setSelectedClauseId] = useState(null);
-  const [activeTab, setActiveTab] = useState("pdf"); // 'pdf' or 'text'
-  
-  const textContainerRef = useRef(null);
 
   const handleFileChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -26,7 +22,6 @@ function App() {
     setLoading(true);
     setError(null);
     setResults(null);
-    setFullText("");
     setPdfBase64("");
     setSelectedClauseId(null);
     
@@ -45,7 +40,6 @@ function App() {
         throw new Error(data.error || "Analysis failed");
       }
       
-      setFullText(data.full_text);
       setPdfBase64(data.pdf_base64);
       setResults(data.results || []);
       
@@ -60,59 +54,43 @@ function App() {
     }
   };
 
-  // Scroll to clause when selected from list
-  useEffect(() => {
-    if (selectedClauseId && activeTab === 'text' && textContainerRef.current) {
-      const markEl = textContainerRef.current.querySelector(`mark[data-id="${selectedClauseId}"]`);
-      if (markEl) {
-        markEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    }
-  }, [selectedClauseId, activeTab]);
-
-  const handleTextClick = (e) => {
-    if (e.target.tagName === 'MARK') {
-      const cid = e.target.getAttribute('data-id');
-      if (cid) setSelectedClauseId(cid);
-    }
-  };
-
-  const getHighlightedHtml = () => {
-    if (!fullText) return { __html: "" };
-    
-    let html = fullText.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    
-    if (results) {
-      results.forEach((r, idx) => {
-        const cid = r.chunk_id || `Clause ${idx+1}`;
-        const ctext = r.clause_causing_risk || "";
-        
-        if (ctext) {
-          const safeCtext = ctext.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-          const isSelected = selectedClauseId === cid;
-          const className = isSelected ? "active" : "";
-          const replacement = `<mark data-id="${cid}" class="${className}">${safeCtext}</mark>`;
-          html = html.replace(safeCtext, replacement);
-        }
-      });
-    }
-    
-    return { __html: html };
-  };
 
   const selectedResult = results ? results.find((r, i) => (r.chunk_id || `Clause ${i+1}`) === selectedClauseId) : null;
+
+  const calculateOverallBalance = () => {
+    if (!results || results.length === 0) return null;
+    let totalA = 0;
+    let totalB = 0;
+    let count = 0;
+    
+    results.forEach(r => {
+      if (r.mathematical_balance) {
+        totalA += (r.mathematical_balance.company_a_favorability_pct || 0);
+        totalB += (r.mathematical_balance.company_b_favorability_pct || 0);
+        count++;
+      }
+    });
+    
+    if (count === 0) return null;
+    return {
+      a: (totalA / count).toFixed(1),
+      b: (totalB / count).toFixed(1)
+    };
+  };
+
+  const overallBalance = calculateOverallBalance();
 
   return (
     <div className="dashboard-container">
       <header className="header">
-        <h1>⚖️ M&A Risk extraction</h1>
+        <h1>⚖️ Agentic Contract Risk Extraction</h1>
         <p>Agentic Contract Risk Analysis Dashboard</p>
       </header>
 
       {!results && (
         <div className="uploader-card">
           <FileText size={48} color="var(--accent-color)" style={{ margin: '0 auto 1rem' }} />
-          <h2 style={{ marginBottom: '1rem' }}>Upload M&A Contract</h2>
+          <h2 style={{ marginBottom: '1rem' }}>Upload Contract</h2>
           <label className="upload-label">
             <input type="file" className="file-input" accept=".pdf" onChange={handleFileChange} />
             {file ? file.name : "Select PDF File"}
@@ -139,9 +117,18 @@ function App() {
             </div>
             
             <div style={{ marginBottom: '1rem' }}>
-              <div style={{ padding: '0.75rem', background: 'rgba(34, 197, 94, 0.1)', border: '1px solid var(--success-color)', borderRadius: '0.5rem', color: 'var(--success-color)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <div style={{ padding: '0.75rem', background: 'rgba(34, 197, 94, 0.1)', border: '1px solid var(--success-color)', borderRadius: '0.5rem', color: 'var(--success-color)', display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
                 <CheckCircle size={18} /> Analysis Complete! {results.length} found.
               </div>
+              {overallBalance && (
+                <div style={{ padding: '0.75rem', background: '#f8fafc', border: '1px solid var(--border-color)', borderRadius: '0.5rem' }}>
+                  <div style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', marginBottom: '0.25rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Overall Contract Weightage</div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.9rem', fontWeight: 600 }}>
+                    <span style={{ color: 'var(--accent-color)' }}>Buyer (A): {overallBalance.a}%</span>
+                    <span style={{ color: 'var(--success-color)' }}>Target (B): {overallBalance.b}%</span>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div className="clauses-list">
@@ -167,43 +154,19 @@ function App() {
 
           {/* Center Column: Document Viewer */}
           <div className="glass-panel">
-            <div className="tabs">
-              <button 
-                className={`tab ${activeTab === 'pdf' ? 'active' : ''}`} 
-                onClick={() => setActiveTab('pdf')}
-              >
-                Original PDF
-              </button>
-              <button 
-                className={`tab ${activeTab === 'text' ? 'active' : ''}`} 
-                onClick={() => setActiveTab('text')}
-              >
-                Interactive Text
-              </button>
+            <div style={{ flex: 1, borderRadius: '0.5rem', overflow: 'hidden' }}>
+              {pdfBase64 ? (
+                <iframe 
+                  src={`data:application/pdf;base64,${pdfBase64}#toolbar=0`} 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 'none' }}
+                  title="PDF Viewer"
+                />
+              ) : (
+                <p>No PDF available</p>
+              )}
             </div>
-            
-            {activeTab === 'pdf' ? (
-              <div style={{ flex: 1, borderRadius: '0.5rem', overflow: 'hidden' }}>
-                {pdfBase64 ? (
-                  <iframe 
-                    src={`data:application/pdf;base64,${pdfBase64}#toolbar=0`} 
-                    width="100%" 
-                    height="100%" 
-                    style={{ border: 'none' }}
-                    title="PDF Viewer"
-                  />
-                ) : (
-                  <p>No PDF available</p>
-                )}
-              </div>
-            ) : (
-              <div 
-                className="doc-content" 
-                ref={textContainerRef}
-                onClick={handleTextClick}
-                dangerouslySetInnerHTML={getHighlightedHtml()}
-              />
-            )}
           </div>
 
           {/* Right Column: Scorecard */}
